@@ -76,3 +76,12 @@ This project is a video player application designed to provide a seamless experi
    ```bash
    git clone https://github.com/imvikaskashyap/client-video-playback.git
    cd video-player-app
+
+## Setup Instructions
+
+### Install Node Modules:
+```bash
+npm i --force
+
+## Start the Application:
+npm run start
