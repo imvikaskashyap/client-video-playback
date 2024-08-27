@@ -59,6 +59,9 @@ const HomePage = () => {
               6. Please note that the backend is hosted on Render, so it might
               take up to 50 seconds for the API to respond initially.
             </Text>
+            <Text fontSize="lg" color="gray.700">
+              7. Please check readme file for a detailed description of the solution.
+            </Text>
           </VStack>
         </Box>
       </Center>
