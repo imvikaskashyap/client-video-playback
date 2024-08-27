@@ -14,7 +14,7 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/videos" element={<ProtectedRoute element={<Videos />} />} />
         <Route path="/upload" element={<ProtectedRoute element={<Upload />} />} />
         <Route path="/login" element={<Login />} />

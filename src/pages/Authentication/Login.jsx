@@ -41,7 +41,7 @@ const Login = () => {
 
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
-      navigate('/');
+      navigate('/videos');
     } catch (error) {
       toast({
         title: 'Login Failed',
