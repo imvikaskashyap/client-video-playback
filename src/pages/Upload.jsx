@@ -15,6 +15,7 @@ import { BACKEND_URL } from '../utils/config';
 const Upload = () => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const handleFileChange = e => {
     const selectedFile = e.target.files[0];
@@ -25,17 +26,22 @@ const Upload = () => {
     setTitle(e.target.value);
   };
 
+  const handleDescriptionChange = e => {
+    setDescription(e.target.value);
+  };
+
   const handleUpload = async e => {
     e.preventDefault();
 
-    if (!file || !title) {
-      alert('Please provide a title and choose a video file.');
+    if (!file || !title || !description) {
+      alert('Please provide a title, description, and choose a video file.');
       return;
     }
 
     const formData = new FormData();
     formData.append('video', file);
     formData.append('title', title);
+    formData.append('description', description);
 
     try {
       const response = await axios.post(
@@ -64,13 +70,20 @@ const Upload = () => {
       <VStack h={'full'} color={'purple.500'} justifyContent={'center'}>
         <AiOutlineCloudUpload size={'60px'} />
         <form onSubmit={handleUpload}>
-          <VStack>
+          <VStack spacing={4}>
             <Input
               required
               type={'text'}
               placeholder="Video Title"
               value={title}
               onChange={handleTitleChange}
+            />
+            <Input
+              required
+              type={'text'}
+              placeholder="Video Description"
+              value={description}
+              onChange={handleDescriptionChange}
             />
             <HStack>
               <Input

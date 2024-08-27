@@ -14,25 +14,25 @@ import {
 } from '@chakra-ui/react';
 import { BiMenuAltLeft } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/ivideos-logos (1)/ivideos-logos.jpeg';
+import logo from '../assets/logo.jpg';
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-   
     localStorage.removeItem('token');
+    localStorage.removeItem('currentVideoIndex');
     localStorage.removeItem('userId');
-    onClose()
-    
+
+    onClose();
+
     navigate('/login');
   };
 
   return (
     <>
-      
       <Button
         zIndex={'overlay'}
         pos={'fixed'}
@@ -48,12 +48,9 @@ const Header = () => {
         <BiMenuAltLeft size={'20'} />
       </Button>
 
-     
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-      
         <DrawerOverlay />
 
-       
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader display={'flex'}>
@@ -80,19 +77,23 @@ const Header = () => {
             </Link>
           </DrawerHeader>
           <DrawerBody>
-          
             <VStack alignItems={'flex-start'}>
-           
+              <Button
+                onClick={onClose}
+                variant={'ghost'}
+                colorScheme={'purple'}
+              >
+                <Link to={'/'}>Home</Link>
+              </Button>
 
               <Button
                 onClick={onClose}
                 variant={'ghost'}
                 colorScheme={'purple'}
               >
-                <Link to={'/'}>Videos</Link>
+                <Link to={'/videos'}>Videos</Link>
               </Button>
 
-            
               <Button
                 onClick={onClose}
                 variant={'ghost'}
@@ -100,13 +101,7 @@ const Header = () => {
               >
                 <Link to={'/upload'}>Upload Videos</Link>
               </Button>
-              <Button
-                onClick={onClose}
-                variant={'ghost'}
-                colorScheme={'purple'}
-              >
-                <Link to={'/dashboard'}>Progress Dashboard</Link>
-              </Button>
+            
             </VStack>
 
             <HStack
@@ -131,9 +126,8 @@ const Header = () => {
                 colorScheme={'purple'}
                 variant={'outline'}
               >
-                Log Out 
+                Log Out
               </Button>
-
             </HStack>
           </DrawerBody>
         </DrawerContent>

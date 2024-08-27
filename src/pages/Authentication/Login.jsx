@@ -24,13 +24,10 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        `${BACKEND_URL}/users/login`,
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${BACKEND_URL}/users/login`, {
+        email,
+        password,
+      });
 
       toast({
         title: 'Login Successful',
@@ -86,10 +83,6 @@ const Login = () => {
             onChange={e => setPassword(e.target.value)}
             focusBorderColor={'purple.500'}
           />
-
-          {/* <Button variant={'link'} alignSelf={'flex-end'}>
-            <Link to={'/forgetPassword'}>Forgot Password?</Link>
-          </Button> */}
 
           <Button colorScheme={'purple'} type={'submit'} isLoading={loading}>
             Log In
